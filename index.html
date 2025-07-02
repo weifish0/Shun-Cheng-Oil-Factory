@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="copyright" content="順成油廠 冷壓油品">
   <meta name="Description" content="順成油廠 秉持『品質第一』誠信原則。遵循古法冷壓製作，導入現代健康、養生概念,製作麻油、花生油、苦茶油、芝麻糖、花生糖、養生穀粉、順成、堅果、白麻油、冷壓、源順、順發、北港、黑麻油">
   <meta name="KEYWORDS" content="冷壓油品、麻油、花生油、苦茶油、芝麻糖、花生糖、養生穀粉、順成、堅果、白麻油、冷壓、源順、順發、北港、黑麻油、香油">
@@ -15,8 +15,8 @@
   
   <title>守住家的味道！碩士三姊弟齊心打拚替七十多年老油廠找出路∣一步一腳印【家的味道花生油三姊弟】 | 順成油廠 冷壓油品 | 麻油 花生油 苦茶油</title> 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="entry.css">
   <style>
+    /* --- Base Styles --- */
     html, body {
       overflow-x: hidden;
       width: 100%;
@@ -31,13 +31,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center; /* Center content vertically */
     }
     .entry-container {
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 32px 16px 24px 16px;
+      padding: 32px 16px; /* Simplified padding */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -54,8 +54,10 @@
     .card-list {
       width: 100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row; /* Default to horizontal */
+      flex-wrap: wrap;
       gap: 24px;
+      justify-content: center;
     }
     .entry-card {
       background: #fff;
@@ -69,10 +71,12 @@
       cursor: pointer;
       transition: box-shadow 0.3s, transform 0.3s;
       border: 2px solid transparent;
-      position: relative;
-      min-height: 180px;
       text-decoration: none;
       color: inherit;
+      flex: 1 1 280px; /* Adjusted flex-basis for better spacing */
+      max-width: 340px;
+      min-width: 260px;
+      min-height: 220px;
     }
     .entry-card:active {
       transform: scale(0.97);
@@ -88,8 +92,6 @@
       justify-content: center;
       border-radius: 50%;
       background: #e8f5e8;
-      margin-left: auto;
-      margin-right: auto;
     }
     .entry-card h3 {
       font-size: 1.2rem;
@@ -110,8 +112,8 @@
       font-weight: 600;
       border: none;
       border-radius: 25px;
-      padding: 8px 28px;
-      font-size: 1rem;
+      padding: 12px 32px;
+      font-size: 1.1rem;
       letter-spacing: 1px;
       cursor: pointer;
       transition: background 0.2s;
@@ -121,6 +123,8 @@
     .entry-card .go-btn:active {
       background: #388e3c;
     }
+
+    /* --- Hover Effects (for desktop) --- */
     @media (hover: hover) and (pointer: fine) {
       .entry-card:hover {
         box-shadow: 0 8px 32px rgba(76, 175, 80, 0.18);
@@ -131,28 +135,27 @@
         background: #388e3c;
       }
     }
-    @media (min-width: 768px) {
+
+    /* --- RWD for Mobile & Tablets (Single Column Layout) --- */
+    @media (max-width: 768px) {
       .card-list {
-        flex-direction: row;
-        gap: 32px;
-        justify-content: center;
+        flex-direction: column; /* This is the key change: stack cards vertically */
+        align-items: stretch;   /* Make cards take up full width */
+        gap: 20px;
       }
       .entry-card {
-        flex: 1 1 0;
-        min-width: 220px;
-        max-width: 320px;
-        min-height: 220px;
+        max-width: 100%; /* Ensure card does not exceed screen width */
+        min-width: 0;
+        margin: 0;
       }
-    }
-    @media (max-width: 400px) {
       .entry-title {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
       .entry-card h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
       .entry-card p {
-        font-size: 0.92rem;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -162,65 +165,19 @@
     <img src="https://www.dailyoil.com.tw/images/logo/dailyoil-logo-black.svg" alt="順成油廠 LOGO" style="width: 120px; margin-bottom: 18px; display: block;" />
     <div class="entry-title">選擇您要前往的頁面</div>
     <div class="card-list">
-      <!-- <a class="entry-card" href="./" target="_blank">
-        <div class="icon">🌾</div>
-        <h3>農夫數據監測儀表板</h3>
-        <p>看見農地上的每一滴水、每一度溫度的智慧管理工具</p>
-        <span class="go-btn">立即前往</span>
-      </a>
-      <a class="entry-card" href="./company_dashboard.html" target="_blank">
-        <div class="icon">🏢</div>
-        <h3>公司減碳數據儀表板</h3>
-        <p>掌握企業贊助帶來的碳排減量與永續影響力</p>
-        <span class="go-btn">立即前往</span>
-      </a> -->
       <a class="entry-card" href="./product_customer_page.html" target="_blank">
         <div class="icon">📖</div>
         <h3>產品故事頁面</h3>
         <p>用故事行銷，讓消費者認識每一粒米的旅程</p>
         <span class="go-btn">立即前往</span>
       </a>
+      <a class="entry-card" href="./dashboard.html" target="_blank">
+        <div class="icon">📊</div>
+        <h3>商家行銷數據 Dashboard</h3>
+        <p>即時監測不同油品在各大平台的行銷成效，助您精準決策</p>
+        <span class="go-btn">立即前往</span>
+      </a>
     </div>
   </div>
-  <script>
-    // 防止縮放和滾動
-    document.addEventListener('touchmove', function(e) {
-      if (e.scale !== 1) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-    
-    // 防止雙擊縮放
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-    
-    // 防止左右滑動
-    document.addEventListener('touchstart', function(e) {
-      const touch = e.touches[0];
-      const startX = touch.clientX;
-      const startY = touch.clientY;
-      
-      function handleTouchMove(e) {
-        const touch = e.touches[0];
-        const deltaX = touch.clientX - startX;
-        const deltaY = touch.clientY - startY;
-        
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-          e.preventDefault();
-        }
-      }
-      
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', function() {
-        document.removeEventListener('touchmove', handleTouchMove);
-      }, { once: true });
-    });
-  </script>
 </body>
-</html> 
+</html>

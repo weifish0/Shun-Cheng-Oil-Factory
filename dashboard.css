@@ -278,6 +278,21 @@ body {
     line-height: 1.6;
 }
 
+/* 熱銷產品圖片美化 */
+.benefit-content img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(60,60,60,0.12);
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f8f8f8;
+    border: 2px solid #f0f0f0;
+}
+
 /* 底部 */
 .footer {
     text-align: center;
@@ -736,4 +751,105 @@ body {
     .benefit-item {
         animation: none;
     }
+}
+
+@media (max-width: 600px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .benefit-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: 14px;
+  }
+  .benefit-content img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  .benefit-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .benefit-content p {
+    font-size: 0.95rem;
+  }
+  .benefit-icon {
+    margin-bottom: 6px;
+  }
+}
+
+.media-marketing-section {
+  margin-bottom: 50px;
+}
+.media-marketing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.media-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(76,175,80,0.08);
+  padding: 28px 12px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+  border: 2px solid transparent;
+}
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(76,175,80,0.15);
+}
+.media-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.media-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-bottom: 6px;
+}
+.media-value {
+  font-size: 1.05rem;
+  color: #222;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .media-marketing-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .media-card {
+    padding: 18px 6px 14px 6px;
+    border-radius: 12px;
+  }
+  .media-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+  }
+  .media-name {
+    font-size: 1rem;
+  }
+  .media-value {
+    font-size: 0.98rem;
+  }
 } 
