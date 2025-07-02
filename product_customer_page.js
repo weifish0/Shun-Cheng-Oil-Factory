@@ -73,6 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const input = document.getElementById('aiChatbotInput');
   const messages = document.getElementById('aiChatbotMessages');
 
+  // 對話歷史
+  let chatHistory = [
+    { role: 'system', content: 'You are a helpful assistant. 你是一個樂於助人的助手。' }
+  ];
+
   // 開啟對話視窗
   fab.addEventListener('click', function() {
     windowEl.classList.add('open');
@@ -90,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
       windowEl.classList.remove('open');
     }
   });
-  // 表單送出顯示訊息
-  form.addEventListener('submit', function(e) {
+  // 表單送出顯示訊息並串接API
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
@@ -102,13 +107,40 @@ document.addEventListener('DOMContentLoaded', function() {
     messages.appendChild(userMsg);
     messages.scrollTop = messages.scrollHeight;
     input.value = '';
-    // 模擬AI回覆
-    setTimeout(() => {
-      const botMsg = document.createElement('div');
-      botMsg.className = 'ai-chatbot-message ai-chatbot-message-bot';
-      botMsg.textContent = '感謝您的提問，我們會盡快回覆您！';
-      messages.appendChild(botMsg);
-      messages.scrollTop = messages.scrollHeight;
-    }, 800);
+    // 更新對話歷史
+    chatHistory.push({ role: 'user', content: text });
+    // 顯示載入中
+    const botMsg = document.createElement('div');
+    botMsg.className = 'ai-chatbot-message ai-chatbot-message-bot';
+    botMsg.textContent = '思考中...';
+    messages.appendChild(botMsg);
+    messages.scrollTop = messages.scrollHeight;
+    // 串接API
+    try {
+      const response = await fetch('https://portal.genai.nchc.org.tw/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'x-api-key': 'sk-hz54fBHSVAYzIJYiiTvQcg',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
+          messages: chatHistory,
+          max_tokens: 200,
+          temperature: 0.7
+        })
+      });
+      const data = await response.json();
+      if (data && data.choices && data.choices[0] && data.choices[0].message) {
+        const reply = data.choices[0].message.content;
+        botMsg.textContent = reply;
+        chatHistory.push({ role: 'assistant', content: reply });
+      } else {
+        botMsg.textContent = '很抱歉，AI暫時無法回應，請稍後再試。';
+      }
+    } catch (err) {
+      botMsg.textContent = '連線失敗，請檢查網路或稍後再試。';
+    }
+    messages.scrollTop = messages.scrollHeight;
   });
 })(); 
