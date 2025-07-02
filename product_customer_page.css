@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'ChenYuluoyan';
-  src: url('./public/chiarostd_b.ttf') format('truetype');
+  src: url('./public/chiarostd_b.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
     { role: 'system', content: 'You are a helpful assistant. 你是一個樂於助人的助手。' }
   ];
 
+  // 客製化 system_prompt
+  const systemPrompt = `你是順成油廠AI客服助手「小成」。請以友善、專業的專家身份，用繁體中文回答顧客關於產品、品牌故事、製程與購買方式的提問。你的目標是提升顧客滿-意度。絕不提供醫療建議或臆測答案。遇到無法處理的複雜問題或客訴時，請禮貌地引導顧客聯繫真人客服。`;
+
   // 開啟對話視窗
   fab.addEventListener('click', function() {
     windowEl.classList.add('open');
@@ -115,26 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
     botMsg.textContent = '思考中...';
     messages.appendChild(botMsg);
     messages.scrollTop = messages.scrollHeight;
-    // 串接API
+    // 串接自己的後端 API
     try {
-      const response = await fetch('https://portal.genai.nchc.org.tw/api/v1/chat/completions', {
+      const response = await fetch('https://nchc-llm-wraper.onrender.com/chat/simple', {
         method: 'POST',
         headers: {
-          'x-api-key': 'sk-hz54fBHSVAYzIJYiiTvQcg',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
-          messages: chatHistory,
-          max_tokens: 200,
-          temperature: 0.7
+          message: text,
+          system_prompt: systemPrompt
         })
       });
       const data = await response.json();
-      if (data && data.choices && data.choices[0] && data.choices[0].message) {
-        const reply = data.choices[0].message.content;
-        botMsg.textContent = reply;
-        chatHistory.push({ role: 'assistant', content: reply });
+      if (data && data.response) {
+        botMsg.textContent = data.response;
+        chatHistory.push({ role: 'assistant', content: data.response });
       } else {
         botMsg.textContent = '很抱歉，AI暫時無法回應，請稍後再試。';
       }
