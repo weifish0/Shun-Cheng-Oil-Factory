@@ -19,6 +19,23 @@
 </head>
 
 <body>
+  <!-- AI客服懸浮按鈕與對話視窗 -->
+  <div class="ai-chatbot-fab" id="aiChatbotFab">
+    <i class="fas fa-robot"></i>
+  </div>
+  <div class="ai-chatbot-window" id="aiChatbotWindow">
+    <div class="ai-chatbot-header">
+      <span>AI客服</span>
+      <button class="ai-chatbot-close" id="aiChatbotClose">&times;</button>
+    </div>
+    <div class="ai-chatbot-messages" id="aiChatbotMessages">
+      <div class="ai-chatbot-message ai-chatbot-message-bot">您好，我是順成油廠AI客服，有任何問題歡迎詢問！</div>
+    </div>
+    <form class="ai-chatbot-input-area" id="aiChatbotForm" autocomplete="off">
+      <input type="text" id="aiChatbotInput" placeholder="請輸入您的問題..." autocomplete="off" />
+      <button type="submit"><i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
   <!-- Hero 區塊 -->
   <section class="hero-section">
     <div class="hero-bg"></div>
