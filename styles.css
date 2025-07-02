@@ -1,0 +1,878 @@
+/* 全域樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 標題區域 */
+.header {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.farm-location {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* 區塊標題 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #4CAF50;
+}
+
+.section-title i {
+    color: #4CAF50;
+    font-size: 1.3rem;
+}
+
+/* 農地總覽卡片區塊 */
+.overview-section {
+    margin-bottom: 40px;
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #4CAF50;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.card-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4CAF50;
+    margin-bottom: 8px;
+}
+
+.card-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.card-status.good {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.card-status.normal {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+/* 折線圖區塊 */
+.chart-section {
+    margin-bottom: 40px;
+    z-index: 1;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+#temperatureChart {
+    max-height: 400px;
+    z-index: 1;
+}
+
+/* 確保所有 canvas 元素都有較低的 z-index */
+canvas {
+    z-index: 1 !important;
+}
+
+/* 轉型預估區塊 */
+.transformation-section {
+    margin-bottom: 40px;
+}
+
+.transformation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.transformation-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border-left: 5px solid #8D6E63;
+}
+
+.transformation-card:hover {
+    transform: translateY(-3px);
+}
+
+.transformation-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.transformation-icon.positive {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.transformation-icon.neutral {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+}
+
+.transformation-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.transformation-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.transformation-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.transformation-value.positive {
+    color: #4CAF50;
+}
+
+.transformation-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 風險指示器 */
+.risk-indicator {
+    margin-bottom: 10px;
+}
+
+.risk-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.risk-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.risk-fill.low {
+    background: #4CAF50;
+}
+
+.risk-fill.medium {
+    background: #FF9800;
+}
+
+.risk-fill.high {
+    background: #f44336;
+}
+
+.risk-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 進度條 */
+.progress-container {
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 底部 */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    .user-info {
+        text-align: center;
+    }
+    
+    .overview-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .transformation-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card, .transformation-card {
+        padding: 20px;
+    }
+    
+    .chart-container {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Modal 響應式調整 */
+    .modal-content {
+        width: 95vw;
+        min-width: unset;
+        max-height: 85vh;
+        padding: 25px 20px 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .overview-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .card-value, .transformation-value {
+        font-size: 1.5rem;
+    }
+    
+    .card-icon, .transformation-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-icon i, .transformation-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .card-content h3 {
+        font-size: 1rem;
+    }
+    
+    .card-value {
+        font-size: 1.3rem;
+    }
+    
+    .card-status {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    /* 手機版 Modal 優化 */
+    .modal {
+        /* 確保在手機上全屏顯示 */
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .modal-overlay {
+        /* 手機上使用更大的遮罩範圍 */
+        left: -50px;
+        top: -50px;
+        right: -50px;
+        bottom: -50px;
+        width: calc(100vw + 100px);
+        height: calc(100vh + 100px);
+        /* 手機上使用更深的遮罩 */
+        background: rgba(44, 62, 80, 0.6);
+    }
+    
+    .modal-content {
+        /* 手機上使用全屏寬度，但高度調整為 90vh 留出一些空間 */
+        width: 100vw;
+        height: 90vh;
+        max-width: 100vw;
+        max-height: 90vh;
+        min-width: unset;
+        padding: 20px 15px 15px 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(20vh) scale(0.95);
+        border-radius: 0;
+        /* 手機上使用更快的動畫 */
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        /* 手機上添加滾動 */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        /* 手機上添加更好的陰影 */
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal.show .modal-content {
+        transform: translateY(0) scale(1);
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        padding-right: 40px; /* 為關閉按鈕留空間 */
+        line-height: 1.3;
+    }
+    
+    .modal-close {
+        /* 手機上更大的關閉按鈕 */
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 15;
+    }
+    
+    .modal-chart-container {
+        height: 180px;
+        margin-bottom: 20px;
+    }
+    
+    /* 手機上優化狀態顯示 */
+    .moisture-status-row,
+    .light-efficiency-status,
+    .co2-concentration-status {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .moisture-status,
+    .light-efficiency,
+    .co2-status {
+        margin-left: 0;
+        margin-top: 4px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    /* 手機上優化提示框 */
+    .irrigation-tip,
+    .temperature-warning,
+    .temperature-tip,
+    .light-tip,
+    .co2-note {
+        font-size: 0.95rem;
+        padding: 10px;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        border-radius: 6px;
+    }
+    
+    /* 手機上添加滑動關閉功能 */
+    .modal-content::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        z-index: 10;
+    }
+}
+
+/* 添加手機專用的觸控優化 */
+@media (max-width: 480px) and (hover: none) {
+    .modal-close {
+        /* 手機上增加觸控區域 */
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .modal-content {
+        /* 手機上防止文字選擇 */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+}
+
+/* 橫屏手機優化 */
+@media (max-width: 480px) and (orientation: landscape) {
+    .modal-content {
+        height: 85vh;
+        padding: 15px 20px 15px 20px;
+        transform: translateY(15vh) scale(0.95);
+    }
+    
+    .modal.show .modal-content {
+        transform: translateY(0) scale(1);
+    }
+    
+    .modal-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .modal-chart-container {
+        height: 150px;
+        margin-bottom: 15px;
+    }
+}
+
+/* 動畫效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card, .transformation-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+.transformation-card:nth-child(1) { animation-delay: 0.5s; }
+.transformation-card:nth-child(2) { animation-delay: 0.6s; }
+.transformation-card:nth-child(3) { animation-delay: 0.7s; }
+.transformation-card:nth-child(4) { animation-delay: 0.8s; }
+
+/* Modal 樣式 */
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+.modal-overlay {
+    position: absolute;
+    left: -200px; 
+    top: -200px; 
+    right: -200px; 
+    bottom: -200px;
+    width: calc(100vw + 400px);
+    height: calc(100vh + 400px);
+    background: rgba(44, 62, 80, 0.45);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.modal.show .modal-overlay {
+    opacity: 1;
+}
+.modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+    padding: 40px 30px 30px 30px;
+    min-width: 500px;
+    max-width: 95vw;
+    width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal.show .modal-content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 3;
+}
+.modal-close:hover {
+    color: #f44336;
+}
+.modal-chart-container {
+    width: 100%;
+    margin-bottom: 25px;
+    height: 250px;
+}
+.irrigation-tip {
+    color: #8D6E63;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+.moisture-status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+.moisture-value {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 1.2rem;
+}
+.moisture-range {
+    color: #8D6E63;
+    font-weight: 500;
+}
+.moisture-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 8px;
+}
+.moisture-status.dry {
+    background: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+.moisture-status.normal {
+    background: #e8f5e8;
+    color: #388e3c;
+    border: 1px solid #388e3c;
+}
+.moisture-status.wet {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+}
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95vw;
+        min-width: unset;
+        padding: 18px 6px 12px 6px;
+    }
+    .modal-title {
+        font-size: 1.1rem;
+    }
+}
+
+.temperature-warning {
+    color: #f57c00;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    background: #fff3e0;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #f57c00;
+}
+
+.temperature-tip {
+    color: #4CAF50;
+    font-size: 1rem;
+    background: #e8f5e8;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    line-height: 1.5;
+}
+
+.light-efficiency-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.light-value {
+    font-weight: bold;
+    color: #FF9800;
+    font-size: 1.2rem;
+}
+
+.light-efficiency {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.light-efficiency.insufficient {
+    background: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #f57c00;
+}
+
+.light-efficiency.optimal {
+    background: #e8f5e8;
+    color: #388e3c;
+    border: 1px solid #388e3c;
+}
+
+.light-efficiency.excessive {
+    background: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+.light-tip {
+    color: #d32f2f;
+    font-size: 1rem;
+    background: #ffebee;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #d32f2f;
+    line-height: 1.5;
+}
+
+.co2-concentration-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.co2-value {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 1.2rem;
+}
+
+.co2-range {
+    color: #8D6E63;
+    font-weight: 500;
+}
+
+.co2-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.co2-status.low {
+    background: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #f57c00;
+}
+
+.co2-status.optimal {
+    background: #e8f5e8;
+    color: #388e3c;
+    border: 1px solid #388e3c;
+}
+
+.co2-status.high {
+    background: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+.co2-note {
+    color: #4CAF50;
+    font-size: 1rem;
+    background: #e8f5e8;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    line-height: 1.5;
+    font-style: italic;
+} 

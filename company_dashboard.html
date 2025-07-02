@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業 ESG 數據儀表板 - 花蓮有機農地轉型成果</title>
+    
+    <!-- SEO Meta 標籤 -->
+    <meta name="description" content="企業贊助花蓮有機農地轉型成果展示，包含碳排減量、農民支援、品牌價值提升等 ESG 數據">
+    <meta name="keywords" content="ESG,企業社會責任,有機農業,碳排減量,永續發展,花蓮">
+    <meta name="author" content="企業 ESG 數據儀表板">
+    
+    <!-- Open Graph Meta 標籤 -->
+    <meta property="og:title" content="企業 ESG 數據儀表板 - 花蓮有機農地轉型成果">
+    <meta property="og:description" content="展示企業支持有機農業轉型的正面影響與 ESG 成果">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="favicon/android-chrome-512x512.png">
+    
+    <!-- Favicon 設定 -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    
+    <!-- 主題色彩 -->
+    <meta name="theme-color" content="#4CAF50">
+    
+    <link rel="stylesheet" href="company_dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 標題區域 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <h1>企業 ESG 數據儀表板</h1>
+                </div>
+                <div class="project-info">
+                    <span class="project-name">花蓮有機農地轉型專案</span>
+                    <span class="project-period">2024 年度成果報告</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 總覽數據卡片區塊 -->
+        <section class="overview-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                專案總覽數據
+            </h2>
+            <div class="overview-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>認領農地面積</h3>
+                        <div class="card-value" id="farm-area">12.5</div>
+                        <div class="card-unit">公頃</div>
+                        <div class="card-status positive">持續擴展中</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>減少碳排放</h3>
+                        <div class="card-value" id="carbon-reduction">31.2</div>
+                        <div class="card-unit">公噸 CO₂</div>
+                        <div class="card-status positive">年度減碳量</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>支援農民數</h3>
+                        <div class="card-value" id="farmers-supported">9</div>
+                        <div class="card-unit">位</div>
+                        <div class="card-status positive">穩定合作</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>減碳有機米銷售包數</h3>
+                        <div class="card-value" id="brand-visibility">625</div>
+                        <div class="card-unit">包減碳有機米</div>
+                        <div class="card-status positive">提升企業曝光度</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 圖表區塊 -->
+        <section class="charts-section">
+            <div class="charts-grid">
+                <!-- 碳排減量趨勢圖 -->
+                <div class="chart-container">
+                    <h3 class="chart-title">
+                        <i class="fas fa-chart-area"></i>
+                        碳排減量趨勢
+                    </h3>
+                    <div class="chart-wrapper">
+                        <canvas id="carbonTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 品牌指標提升圖 -->
+                <div class="chart-container">
+                    <h3 class="chart-title">
+                        <i class="fas fa-chart-bar"></i>
+                        品牌指標提升
+                    </h3>
+                    <div class="chart-wrapper">
+                        <canvas id="brandMetricsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 企業收穫區塊 -->
+        <section class="benefits-section">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                企業收穫與價值
+            </h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>ESG 報告加分</h3>
+                        <p>在年度 ESG 報告中展現具體的環境保護行動，提升企業永續評級</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>建立永續品牌印象</h3>
+                        <p>透過實際行動建立負責任企業形象，獲得消費者認同</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>媒體曝光機會</h3>
+                        <p>獲得正面媒體報導，提升品牌知名度與公關價值</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>客戶關係提升</h3>
+                        <p>強化與重視 ESG 的客戶合作關係，開拓新商機</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>產品包裝故事行銷</h3>
+                        <p>透過 QR Code 連結轉型故事，提升產品附加價值</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>永續獎項認可</h3>
+                        <p>獲得相關永續發展獎項，提升企業聲譽與競爭力</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部資訊 -->
+        <footer class="footer">
+            <p>&copy; 2024 企業 ESG 數據儀表板. 永續發展，共創美好未來.</p>
+        </footer>
+    </div>
+
+    <script src="company_dashboard.js"></script>
+</body>
+</html> 

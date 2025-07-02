@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花蓮有機農地智慧轉型平台 - 農民端 Dashboard</title>
+    
+    <!-- SEO Meta 標籤 -->
+    <meta name="description" content="花蓮有機農地智慧轉型平台，提供農民端 Dashboard 服務，包含土壤濕度、氣溫、光照、二氧化碳濃度等關鍵指標監控">
+    <meta name="keywords" content="花蓮,有機農業,智慧農業,農地監控,Dashboard,土壤濕度,氣溫監控">
+    <meta name="author" content="花蓮有機農地智慧轉型平台">
+    
+    <!-- Open Graph Meta 標籤 (Facebook, LinkedIn) -->
+    <meta property="og:title" content="花蓮有機農地智慧轉型平台 - 農民端 Dashboard">
+    <meta property="og:description" content="智慧監控農地環境，提升有機農業效益">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="favicon/android-chrome-512x512.png">
+    <meta property="og:site_name" content="花蓮有機農地智慧轉型平台">
+    
+    <!-- Twitter Card Meta 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="花蓮有機農地智慧轉型平台 - 農民端 Dashboard">
+    <meta name="twitter:description" content="智慧監控農地環境，提升有機農業效益">
+    <meta name="twitter:image" content="favicon/android-chrome-512x512.png">
+    
+    <!-- Favicon 設定 -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
+    <!-- 主題色彩 -->
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="msapplication-TileColor" content="#4CAF50">
+    <meta name="msapplication-TileImage" content="favicon/android-chrome-192x192.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 標題區域 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h1>花蓮有機農地智慧轉型平台</h1>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">農民：張小明</span>
+                    <span class="farm-location">農地位置：花蓮縣壽豐鄉</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 農地總覽卡片區塊 -->
+        <section class="overview-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                農地總覽
+            </h2>
+            <div class="overview-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>土壤濕度</h3>
+                        <div class="card-value" id="soil-moisture">68%</div>
+                        <div class="card-status good">良好</div>
+                    </div>
+                </div>
+                <!-- 土壤濕度 Modal -->
+                <div id="soil-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" id="soil-modal-close" aria-label="關閉視窗">&times;</button>
+                        <h2 class="modal-title"><i class="fas fa-tint"></i> 土壤濕度詳情</h2>
+                        <div class="modal-chart-container">
+                            <canvas id="soilMoistureChart"></canvas>
+                        </div>
+                        <div class="modal-info">
+                            <p class="irrigation-tip">建議灌溉時間為早上 6:00 - 9:00</p>
+                            <div class="moisture-status-row">
+                                <span>目前濕度：</span>
+                                <span id="modal-current-moisture" class="moisture-value">40%</span>
+                                <span>（作物需求範圍 <span class="moisture-range">50%～70%</span>）</span>
+                                <span id="modal-moisture-status" class="moisture-status dry">過乾</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>氣溫</h3>
+                        <div class="card-value" id="temperature">24°C</div>
+                        <div class="card-status good">適中</div>
+                    </div>
+                </div>
+                <!-- 氣溫 Modal -->
+                <div id="temperature-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" id="temperature-modal-close" aria-label="關閉視窗">&times;</button>
+                        <h2 class="modal-title"><i class="fas fa-thermometer-half"></i> 氣溫詳情</h2>
+                        <div class="modal-chart-container">
+                            <canvas id="temperatureDetailChart"></canvas>
+                        </div>
+                        <div class="modal-info">
+                            <p class="temperature-warning">目前日夜溫差偏大，可能影響作物開花結果率</p>
+                            <div class="temperature-tip">
+                                <strong>建議：</strong>白天氣溫超過 32°C 時建議加強遮蔭或灑水降溫
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>光照</h3>
+                        <div class="card-value" id="light">45,000 lux</div>
+                        <div class="card-status good">充足</div>
+                    </div>
+                </div>
+                <!-- 光照 Modal -->
+                <div id="light-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" id="light-modal-close" aria-label="關閉視窗">&times;</button>
+                        <h2 class="modal-title"><i class="fas fa-sun"></i> 光照詳情</h2>
+                        <div class="modal-chart-container">
+                            <canvas id="lightDistributionChart"></canvas>
+                        </div>
+                        <div class="modal-info">
+                            <div class="light-efficiency-status">
+                                <span>目前光照強度：</span>
+                                <span id="modal-current-light" class="light-value">45,000 lux</span>
+                                <span id="modal-light-efficiency" class="light-efficiency excessive">過強</span>
+                            </div>
+                            <div class="light-tip">
+                                <strong>建議：</strong>中午光照過強，建議設置遮光網，避免曬傷葉面
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>二氧化碳濃度</h3>
+                        <div class="card-value" id="co2">420 ppm</div>
+                        <div class="card-status normal">正常</div>
+                    </div>
+                </div>
+                <!-- CO₂ 濃度 Modal -->
+                <div id="co2-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" id="co2-modal-close" aria-label="關閉視窗">&times;</button>
+                        <h2 class="modal-title"><i class="fas fa-leaf"></i> CO₂ 濃度詳情</h2>
+                        <div class="modal-chart-container">
+                            <canvas id="co2TrendChart"></canvas>
+                        </div>
+                        <div class="modal-info">
+                            <div class="co2-concentration-status">
+                                <span>目前濃度：</span>
+                                <span id="modal-current-co2" class="co2-value">370 ppm</span>
+                                <span>（建議範圍 <span class="co2-range">400-600 ppm</span>）</span>
+                                <span id="modal-co2-status" class="co2-status low">偏低</span>
+                            </div>
+                            <div class="co2-note">
+                                有機農業通常伴隨 CO₂ 濃度改善，有助於提升作物碳吸收效率
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 折線圖區塊 -->
+        <section class="chart-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-area"></i>
+                最近7天氣溫變化
+            </h2>
+            <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 轉型預估區塊 -->
+        <section class="transformation-section">
+            <h2 class="section-title">
+                <i class="fas fa-arrow-up"></i>
+                智慧轉型預估效益
+            </h2>
+            <div class="transformation-cards">
+                <div class="transformation-card">
+                    <div class="transformation-icon positive">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="transformation-content">
+                        <h3>預估收益增加</h3>
+                        <div class="transformation-value positive">+25%</div>
+                        <div class="transformation-description">
+                            透過智慧監控與精準施肥，預估年收益可提升 25%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transformation-card">
+                    <div class="transformation-icon positive">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="transformation-content">
+                        <h3>成本節省</h3>
+                        <div class="transformation-value positive">-15%</div>
+                        <div class="transformation-description">
+                            減少人工成本與肥料浪費，整體成本可降低 15%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transformation-card">
+                    <div class="transformation-icon neutral">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="transformation-content">
+                        <h3>病蟲害風險</h3>
+                        <div class="risk-indicator">
+                            <div class="risk-bar">
+                                <div class="risk-fill low" style="width: 30%"></div>
+                            </div>
+                            <span class="risk-text">低風險 (30%)</span>
+                        </div>
+                        <div class="transformation-description">
+                            智慧監控系統可提前預警，大幅降低病蟲害風險
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transformation-card">
+                    <div class="transformation-icon positive">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="transformation-content">
+                        <h3>有機認證進度</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-text">75%</span>
+                        </div>
+                        <div class="transformation-description">
+                            預計 3 個月內完成有機認證轉型
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部資訊 -->
+        <footer class="footer">
+            <p>&copy; 2024 花蓮有機農地智慧轉型平台. 永續農業，智慧未來.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
