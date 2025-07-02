@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
     min-height: 100vh;
     color: #2c3e50;
     line-height: 1.6;
@@ -21,12 +21,12 @@ body {
 
 /* 標題區域 */
 .header {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    background: linear-gradient(135deg, #FF7043 0%, #D84315 100%);
     color: white;
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 40px;
-    box-shadow: 0 10px 40px rgba(76, 175, 80, 0.25);
+    box-shadow: 0 10px 40px rgba(255, 112, 67, 0.18);
 }
 
 .header-content {
@@ -81,11 +81,11 @@ body {
     color: #2c3e50;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 4px solid #4CAF50;
+    border-bottom: 4px solid #FF7043;
 }
 
 .section-title i {
-    color: #4CAF50;
+    color: #FF7043;
     font-size: 1.5rem;
 }
 
@@ -106,7 +106,7 @@ body {
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    border-left: 6px solid #4CAF50;
+    border-left: 6px solid #FF7043;
     position: relative;
     overflow: hidden;
 }
@@ -118,7 +118,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #4CAF50, #45a049);
+    background: linear-gradient(90deg, #FF7043, #D84315);
 }
 
 .card:hover {
@@ -129,13 +129,13 @@ body {
 .card-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #FF7043, #D84315);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 8px 20px rgba(255, 112, 67, 0.18);
 }
 
 .card-icon i {
@@ -153,7 +153,7 @@ body {
 .card-value {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #4CAF50;
+    color: #FF7043;
     margin-bottom: 5px;
     line-height: 1;
 }
@@ -174,9 +174,9 @@ body {
 }
 
 .card-status.positive {
-    background: #e8f5e8;
-    color: #2e7d32;
-    border: 2px solid #4CAF50;
+    background: #ffe0b2;
+    color: #D84315;
+    border: 2px solid #FF7043;
 }
 
 /* 圖表區塊 */
@@ -195,7 +195,7 @@ body {
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border-left: 6px solid #8D6E63;
+    border-left: 6px solid #FFAB91;
 }
 
 .chart-title {
@@ -211,7 +211,7 @@ body {
 }
 
 .chart-title i {
-    color: #8D6E63;
+    color: #FFAB91;
     font-size: 1.2rem;
 }
 
@@ -240,7 +240,7 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid #FF7043;
 }
 
 .benefit-item:hover {
@@ -251,13 +251,13 @@ body {
 .benefit-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #FF7043, #D84315);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.25);
+    box-shadow: 0 6px 15px rgba(255, 112, 67, 0.18);
 }
 
 .benefit-icon i {
@@ -726,15 +726,15 @@ body {
 /* 高對比度模式支援 */
 @media (prefers-contrast: high) {
     .card {
-        border: 2px solid #4CAF50;
+        border: 2px solid #FF7043;
     }
     
     .benefit-item {
-        border: 2px solid #4CAF50;
+        border: 2px solid #FF7043;
     }
     
     .card-status.positive {
-        background: #4CAF50;
+        background: #FF7043;
         color: white;
     }
 }
@@ -795,7 +795,7 @@ body {
 .media-card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(76,175,80,0.08);
+  box-shadow: 0 4px 20px rgba(255,112,67,0.08);
   padding: 28px 12px 20px 12px;
   display: flex;
   flex-direction: column;
@@ -806,7 +806,7 @@ body {
 }
 .media-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(76,175,80,0.15);
+  box-shadow: 0 8px 28px rgba(255,112,67,0.15);
 }
 .media-icon {
   width: 64px;
@@ -824,7 +824,7 @@ body {
 .media-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #4CAF50;
+  color: #FF7043;
   margin-bottom: 6px;
 }
 .media-value {
