@@ -829,9 +829,9 @@ body {
   position: fixed;
   right: 32px;
   bottom: 110px;
-  width: 420px;
+  width: 1200px;
   max-width: 98vw;
-  height: 600px;
+  height: 800px;
   max-height: 90vh;
   background: #fff;
   border-radius: 18px;
@@ -849,7 +849,7 @@ body {
   background: linear-gradient(135deg, #FF9800, #FF7043);
   color: #fff;
   padding: 16px 20px;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -868,7 +868,7 @@ body {
   padding: 18px 16px 8px 16px;
   overflow-y: auto;
   background: #FFF7E6;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 .ai-chatbot-message {
   margin-bottom: 12px;
@@ -941,7 +941,7 @@ body {
     border-radius: 12px;
   }
   .ai-chatbot-header {
-    font-size: 1rem;
+    font-size: 2rem;
     padding: 12px 12px;
   }
   .ai-chatbot-messages {

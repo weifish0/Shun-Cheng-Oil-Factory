@@ -78,8 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
     { role: 'system', content: 'You are a helpful assistant. 你是一個樂於助人的助手。' }
   ];
 
-  // 客製化 system_prompt
-  const systemPrompt = `你是順成油廠AI客服助手「小成」。請以友善、專業的專家身份，用繁體中文回答顧客關於產品、品牌故事、製程與購買方式的提問。你的目標是提升顧客滿-意度。絕不提供醫療建議或臆測答案。遇到無法處理的複雜問題或客訴時，請禮貌地引導顧客聯繫真人客服。`;
+  let systemPrompt = ""; // 全域變數
+
+  // 頁面載入時先 fetch prompt.txt
+  fetch('./public/prompt.txt')
+    .then(res => res.text())
+    .then(text => {
+      systemPrompt = text;
+    })
+    .catch(err => {
+      console.error('載入 system prompt 失敗', err);
+      systemPrompt = "（預設 system prompt 內容）";
+    });
 
   // 開啟對話視窗
   fab.addEventListener('click', function() {
